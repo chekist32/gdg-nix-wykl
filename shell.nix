@@ -8,4 +8,3 @@ pkgs.mkShell {
     pnpm
   ];
 }
-
