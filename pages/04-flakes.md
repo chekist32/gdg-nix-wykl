@@ -53,7 +53,7 @@ layout: default
 }
 ```
 
-```json {*|3-11|*}
+```json {*|5-10|*}
 { // flake.lock
   "nodes": {
     "nixpkgs": {
@@ -65,21 +65,15 @@ layout: default
         "rev": "331800de5053fcebacf6813adb5db9c9dca22a0c",
         "type": "github"
       },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "root": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      }
-    }
+      ...
   },
-  "root": "root",
-  "version": 7
+  ...
 }
 ```
 ````
+<v-click>
+
+To samo co `package-lock.json` czy `Cargo.lock` - przypina wersje wszystkich zależności.
+
+</v-click>
+

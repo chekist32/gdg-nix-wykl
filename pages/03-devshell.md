@@ -12,7 +12,7 @@ layout: default
 # Co daje devShell
 
 - **Dokładne wersje** narzędzi, biblioteki systemowe i zmienne środowiskowe - w jednym pliku w repozytorium.*
-- **Łatwość wdrożenia**: git clone → `nix-shell` or `nix develop` → kompletne środowisko. Bez ręcznej instalacji.
+- **Łatwość wdrożenia**: git clone -> nix-shell lub nix develop -> kompletne środowisko. Bez ręcznej instalacji.
 - **Bez zaśmiecania** systemu globalnie. Projekty z konfliktującymi zależnościami żyją obok siebie.
 
 ````md magic-move [shell.nix]
@@ -58,34 +58,3 @@ layout: center
 # devShell + direnv
 
 <img :src="'/devshell_direnv.gif'" class="w-full h-[90%] object-contain" />
-
----
-layout: default
----
-
-# devenv
-
-```nix [devenv.nix]
-{ pkgs, ... }: {
-  # narzędzia dostępne w shellu po wejściu
-  packages = [ ... ];
-
-  # zmienne środowiskowe dostępne w shellu
-  env = { ... };
-
-  # języki - automatyczna konfiguracja środowiska
-  languages = { ... };
-
-  # serwisy uruchamiane przez devenv up
-  services = { ... };
-
-  # procesy działające w tle po uruchomieniu devenv up
-  processes = { ... };
-
-  # skrypty dostępne jako komendy w shellu
-  scripts = { ... };
-  ...
-}
-```
-
-[Reference](https://devenv.sh/reference/options)

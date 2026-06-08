@@ -14,7 +14,7 @@ Nix to **funkcyjny menedżer pakietów**.
 - Wszystko ląduje w ``/nix/store`` pod ścieżką z hashem -> wiele wersji obok siebie, zero konfliktów.
 - **Deklaratywność**: opisujesz co chcesz mieć, nie jak to ręcznie zbudować.
 
-```nix {*|1|2-13|3-4|6-9|*} [package.nix] 
+```nix {*|1|2-10|3-4|6-9|*} [package.nix] 
 { stdenv, fetchurl }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "hello";
@@ -24,9 +24,6 @@ stdenv.mkDerivation (finalAttrs: {
     url = "https://ftp.gnu.org/gnu/hello/hello-${finalAttrs.version}.tar.gz";
     sha256 = "1ayhp9v4m4rdhjmnl2bq3cibrbqqkgjbl3s7yk2nhlh8vj3ay16g";
   };
-
-  doInstallCheck = false;
-  doCheck = false;
 })
 ```
 
