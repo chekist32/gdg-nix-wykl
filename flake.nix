@@ -11,11 +11,8 @@
       systems = [
         "x86_64-linux"
       ];
-      
-      pow = a: x: x^a
 
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
-      genAttrs => {"x86_64-linux" = (system: (system: ...) system) }
     in
     {
       devShells = forAllSystems (
