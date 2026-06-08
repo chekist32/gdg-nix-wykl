@@ -57,4 +57,4 @@ layout: center
 
 # devShell + direnv
 
-<img :src="'/devshell_direnv.gif'" class="w-full h-[90%] object-contain" />
+<img src="../public/devshell_direnv.gif" class="w-full h-[90%] object-contain" />

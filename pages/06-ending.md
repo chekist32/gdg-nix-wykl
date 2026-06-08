@@ -48,7 +48,7 @@ layout: end
 # Dziękuję!
 
 <div class="flex items-center gap-2 mt-4">
-  <img :src="'/GitHub-Mark.png'" class="w-8 h-8 invert" />
+  <img src="../public/GitHub-Mark.png" class="w-8 h-8 invert" />
   <a href="https://github.com/chekist32">github.com/chekist32</a>
 </div>
 
