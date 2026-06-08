@@ -3,6 +3,7 @@ theme: default
 title: Nix dla programistów
 author: Vladyslav Kraiev (chekist32)
 
+favicon: /favicon.ico
 colorSchema: light
 highlighter: shiki
 
