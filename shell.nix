@@ -4,7 +4,7 @@
 pkgs.mkShell {
   packages = with pkgs; [
     git
-    nodejs_22
+    nodejs_24
     pnpm
   ];
 }
