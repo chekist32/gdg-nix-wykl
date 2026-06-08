@@ -12,7 +12,7 @@
         "x86_64-linux"
       ];
 
-      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+      forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
       devShells = forAllSystems (
