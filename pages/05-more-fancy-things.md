@@ -28,7 +28,7 @@ pkgs.dockerTools.buildLayeredImage {
   name = "cli-toolbox-nix";
   tag = "latest1";
 
-  contents = with pkgs; [ htop bash busybox ];
+  contents = with pkgs.pkgsMusl; [ htop busybox ];
 
   config = {
     Cmd = [ "sh" ];
@@ -37,8 +37,8 @@ pkgs.dockerTools.buildLayeredImage {
 ```
 
 ```dockerfile [Dockerfile]
-FROM alpine:latest
-RUN apk add --no-cache bash busybox htop
+FROM alpine:3.24.0
+RUN apk add --no-cache busybox htop
 
 CMD [ "sh" ]
 ```
@@ -58,8 +58,8 @@ docker build --no-cache -t cli-toolbox-docker:latest2 .
 docker inspect cli-toolbox-docker:latest1 --format='{{.Id}}'
 docker inspect cli-toolbox-docker:latest2 --format='{{.Id}}'
 
-sha256:6e2b19dff7c6546406d789abb9f908e64b48f38287b1a110b05ed849efcb8b24
-sha256:b013d6225049f1f6aa084398ba112a67330ad545126f69fd541c50bb15d98f37
+sha256:3441c759b7b339fad25e3476f3f2222afdb959d80dfd73e3dcb1d2b9cc03452c
+sha256:08e10d250c09b4d8e0754cd3562bfe027ec00cb8fb2abebdaf2b326e45871a6b
 ```
 
 ```bash {*|7-8|*}
@@ -69,13 +69,13 @@ nix-build ./default1.nix && docker load < result
 docker inspect cli-toolbox-nix:latest1 --format='{{.Id}}'
 docker inspect cli-toolbox-nix:latest2 --format='{{.Id}}'
 
-sha256:c4376656fb6f9285f6c98c87f4b1236a1d2d8d297e7baee7b377a512900103e0
-sha256:c4376656fb6f9285f6c98c87f4b1236a1d2d8d297e7baee7b377a512900103e0
+sha256:116b59e69ba5a6ad4a502e33521e253158e7f8eff0a2e43fe873313b26337dfb
+sha256:116b59e69ba5a6ad4a502e33521e253158e7f8eff0a2e43fe873313b26337dfb
 ```
-## Natomiast Nix buduje większe obrazy
+## Natomiast Nix potrafi budować większe obrazy
 
 ```bash
 IMAGE                              ID             DISK USAGE   CONTENT SIZE
-cli-toolbox-docker:latest1         6e2b19dff7c6       16.7MB         4.82MB
-cli-toolbox-nix:latest1            c4376656fb6f        127MB         60.3MB
+cli-toolbox-docker:latest1         2c02496c6998       14.7MB          4.3MB       
+cli-toolbox-nix:latest1            116b59e69ba5       38.6MB         17.5MB
 ```
