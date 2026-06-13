@@ -52,20 +52,20 @@ Nix może budować obrazy Docker **bez Dockerfile** i **bez Docker daemona**.
 
 <div class="grid grid-cols-2 gap-4">
 
-```nix [default.nix]
-{
-  pkgs ? import (fetchTarball { ... }) { },
-}:
+```nix [docker.nix]
 pkgs.dockerTools.buildLayeredImage {
   name = "cli-toolbox-nix";
-  tag = "latest1";
+  inherit tag;
 
-  contents = with pkgs.pkgsMusl; [ htop busybox ];
+  contents = with pkgs.pkgsStatic; [ 
+    terminfo 
+    htopBin 
+    busybox 
+  ];
 
   config = {
     Cmd = [ "sh" ];
   };
-}
 ```
 
 ```dockerfile [Dockerfile]
@@ -74,8 +74,13 @@ RUN apk add --no-cache busybox htop
 
 CMD [ "sh" ]
 ```
-
 </div>
+
+---
+layout: image
+image: /htop-graph.svg
+backgroundSize: 90%
+---
 
 ---
 layout: default
@@ -101,13 +106,13 @@ nix-build ./default1.nix && docker load < result
 docker inspect cli-toolbox-nix:latest1 --format='{{.Id}}'
 docker inspect cli-toolbox-nix:latest2 --format='{{.Id}}'
 
-sha256:116b59e69ba5a6ad4a502e33521e253158e7f8eff0a2e43fe873313b26337dfb
-sha256:116b59e69ba5a6ad4a502e33521e253158e7f8eff0a2e43fe873313b26337dfb
+sha256:accb85bcc2e5b4bbc59a5cce57342b8ceb1c60df36af4aade809eae9bc3a2dad
+sha256:accb85bcc2e5b4bbc59a5cce57342b8ceb1c60df36af4aade809eae9bc3a2dad
 ```
 ## Natomiast Nix potrafi budować większe obrazy
 
 ```bash
 IMAGE                              ID             DISK USAGE   CONTENT SIZE
-cli-toolbox-docker:latest1         2c02496c6998       14.7MB          4.3MB       
-cli-toolbox-nix:latest1            116b59e69ba5       38.6MB         17.5MB
+cli-toolbox-docker:latest1         3441c759b7b3       14.7MB          4.3MB       
+cli-toolbox-nix:latest1            accb85bcc2e5       26.8MB         8.73MB
 ```
