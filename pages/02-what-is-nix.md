@@ -36,38 +36,6 @@ stdenv.mkDerivation (finalAttrs: {
 layout: default
 ---
 
-# Modularność pakietów
-
-<div />
-
-W przeciwieństwie do apt czy brew - w Nix możesz **dostosować dowolny pakiet** bez forkowania repozytorium.
-
-````md magic-move
-```nix
-# podmienia zależność (np. inna wersja JDK dla Mavena)
-pkgs.maven.override {
-  jdk_headless = pkgs.jdk11_headless;
-}
-```
-```nix
-# zmienia atrybuty/fazy budowania
-pkgs.hello.overrideAttrs (old: {
-  version = "2.10";
-  src = pkgs.fetchurl {
-    url = "https://ftp.gnu.org/gnu/hello/hello-2.10.tar.gz";
-    sha256 = "0ssi1wpaf7plaswqqjwigppsg5fyh99vdlb9kzl7c9lng89ndq1i";
-  };
-})
-```
-````
-
-- **`override`** - podmienia zależności pakietu
-- **`overrideAttrs`** - nadpisuje wersję, źródła, patche, flagi, fazy builda, itp.
-
----
-layout: default
----
-
 # ...nie tylko menedżer pakietów
 
 - **Język Nix** - funkcyjny, dynamicznie typizowany DSL [nix.dev](https://nix.dev/tutorials/nix-language)
