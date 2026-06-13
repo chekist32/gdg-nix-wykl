@@ -12,6 +12,11 @@ Nix to **funkcyjny menedżer pakietów**.
 
 - Pakiet = **czysta funkcja** swoich wejść: źródło + zależności + kroki budowania.<br>Te same wejścia -> ten sam wynik.
 - Wszystko ląduje w ``/nix/store`` pod ścieżką z hashem -> wiele wersji obok siebie, zero konfliktów.
+```bash {lines:false}
+  /nix/store/zi2bj2hlavv8q743li2s9diqbcpmrf9b-hello-2.12.3
+  |--------| |------------------------------| |----------|
+store directory            digest                 name
+```
 - **Deklaratywność**: opisujesz co chcesz mieć, nie jak to ręcznie zbudować.
 
 ```nix {*|1|2-10|3-4|6-9|*} [package.nix] 
