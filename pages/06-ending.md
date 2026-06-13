@@ -38,6 +38,7 @@ layout: default
 **Ciekawe powiązane projekty**
 - [home-manager](https://github.com/nix-community/home-manager) - deklaratywne zarządzanie dotfiles i konfiguracją użytkownika
 - [nix-darwin](https://github.com/LnL7/nix-darwin) - deklaratywna konfiguracja systemu dla macOS
+- [devbox](https://www.jetify.com/devbox) - devShell bez potrzeby znajomości języka Nix - interfejs podobny do npm/pip
 - [devenv.sh](https://devenv.sh) - devShell z gotowymi integracjami dla popularnych języków
 
 
