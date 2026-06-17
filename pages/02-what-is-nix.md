@@ -33,6 +33,61 @@ stdenv.mkDerivation (finalAttrs: {
 ```
 
 ---
+layout: two-cols
+---
+
+# Zmiana kodu = nowy hash
+
+````md magic-move [package.nix] {at: 2}
+```nix
+stdenv.mkDerivation {
+  pname = "hello";
+  version = "2.12";
+  src = fetchurl {
+    url = "...hello-2.12.tar.gz";
+    sha256 = "1ayhp9v4m4...";
+  };
+}
+```
+```nix
+stdenv.mkDerivation {
+  pname = "hello";
+  version = "2.10";
+  src = fetchurl {
+    url = "...hello-2.10.tar.gz";
+    sha256 = "0ssi1wpaf7...";
+  };
+}
+```
+````
+
+::right::
+
+# &nbsp;
+
+````md magic-move [/nix/store] {at: 1, lines:false}
+```bash
+```
+```bash
+/nix/store/g54b6g...-xgcc-15.2.0-libgcc
+/nix/store/bf6wga...-libunistring-1.4.2
+/nix/store/6qa00c...-libidn2-2.3.8
+/nix/store/57iz36...-glibc-2.42-61
+/nix/store/zi2bj2...-hello-2.12.3
+```
+```bash
+/nix/store/g54b6g...-xgcc-15.2.0-libgcc
+/nix/store/bf6wga...-libunistring-1.4.2
+/nix/store/6qa00c...-libidn2-2.3.8
+/nix/store/57iz36...-glibc-2.42-61
+/nix/store/zi2bj2...-hello-2.12.3
+/nix/store/ax9kk1...-hello-2.10
+```
+````
+
+<img v-click="3" src="../public/hello-graph.svg" class="h-[50%] object-contain" />
+
+---
 layout: default
 ---
 
