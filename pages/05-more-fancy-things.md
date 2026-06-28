@@ -77,12 +77,6 @@ CMD [ "sh" ]
 </div>
 
 ---
-layout: image
-image: /htop-graph.svg
-backgroundSize: 90%
----
-
----
 layout: default
 ---
 
