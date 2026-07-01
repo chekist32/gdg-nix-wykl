@@ -5,6 +5,63 @@ layout: section
 # Czym jest Nix?
 
 ---
+layout: two-cols
+---
+
+# Podstawy języka Nix
+
+```nix
+# typy
+42, 3.14, true false, null      # int, float, bool
+"hello ${name}"                 # string
+./rel       /nix/store          # ścieżka
+[ 1 "dwa" (x: x) { x = 10; } ]  # lista
+{ a = "hi"; b = { c.d = 10 }; } # attribute set
+
+# let...in - lokalne zmienne
+let x = 10; y = x * 2;
+in x + y   # => 30
+
+# inherit - skrót: name = name;
+let name = "test";
+in { inherit name; } # => { name = "test"; }
+
+# with attrset; wnosi pola attrset do zasięgu
+let c = { x = 1; y = 2; z = 3; };
+in with c; x + y + z  # zamiast c.x + c.y + c.z
+```
+
+::right::
+
+# &nbsp;
+
+```nix
+# funkcje
+## 1. currying - częściowa aplikacja
+addCurr = x: y: x + y; # x: (y: x + y)
+addCurr 3 5            # => 8
+addCurr3 = addCurr 3;  # zwraca funkcję: y: 3 + y
+addCurr3 5             # => 8
+
+## 2. destrukturyzacja attrset
+addSet = { x, y }: x + y;
+addSet { y = 3; x = 5; }  # => 8
+# ? - domyślna wartość ... - ignoruje resztę
+f = { x, y ? 0, ... }: x + y;
+
+# łączenie obu
+configure = system: { name, version }:
+  "${name}-${version}-${system}";
+
+configure "x86_64-linux" {
+  name = "hello"; version = "2.12";
+}
+# częściowo:
+forLinux = configure "x86_64-linux";
+forLinux { name = "hello"; version = "2.12"; }
+```
+
+---
 layout: default
 ---
 
@@ -96,3 +153,4 @@ layout: default
 - **Język Nix** - funkcyjny, dynamicznie typizowany DSL [nix.dev](https://nix.dev/tutorials/nix-language)
 - **Nixpkgs** - ponad 100k pakietów [search.nixos.org](https://search.nixos.org)
 - **NixOS** - dystrybucja Linuksa zbudowana wokół Nixa [nixos.org](https://nixos.org) 
+
