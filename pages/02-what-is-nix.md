@@ -12,11 +12,11 @@ layout: two-cols
 
 ```nix
 # typy
-42, 3.14, true false, null      # int, float, bool
-"hello ${name}"                 # string
-./rel       /nix/store          # ścieżka
-[ 1 "dwa" (x: x) { x = 10; } ]  # lista
-{ a = "hi"; b = { c.d = 10 }; } # attribute set
+42, 3.14, true false, null       # int, float, bool
+"hello ${name}"                  # string
+./rel       /nix/store           # ścieżka
+[ 1 "dwa" (x: x) { x = 10; } ]   # lista
+{ a = "hi"; b = { c.d = 10; }; } # attribute set
 
 # let...in - lokalne zmienne
 let x = 10; y = x * 2;
@@ -48,6 +48,7 @@ addSet = { x, y }: x + y;
 addSet { y = 3; x = 5; }  # => 8
 # ? - domyślna wartość ... - ignoruje resztę
 f = { x, y ? 0, ... }: x + y;
+f { x = 5; z = 2; } # => 5
 
 # łączenie obu
 configure = system: { name, version }:
