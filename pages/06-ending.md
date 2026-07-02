@@ -16,8 +16,6 @@ layout: default
 - **Dokumentacja** - rozproszona, czasem nieaktualna
 - **Mniej rozwinięty ekosystem** - w porównaniu do Docker, Ansible czy Terraform, gotowych rozwiązań jest znacznie mniej
 - **Czas ewaluacji/budowania** - pierwsze pobranie nixpkgs, cache miss czy ewaluacja dużego configa potrafią trwać długo
-- **Komunikaty błędów** - potrafią być kryptyczne, szczególnie dla początkujących
-- **Słabsze wsparcie dla macOS i Windows** - na macOS część rzeczy wymaga dodatkowej konfiguracji, na Windows wymagany WSL2
 
 ---
 layout: default
