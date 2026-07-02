@@ -22,6 +22,18 @@ fonts:
 #### Vladyslav Kraeiv · GDG Toruń · 2026
 
 ---
+layout: center
+---
+
+# Agenda
+
+1. **Czym są menedżery pakietów?**
+2. **Czym jest Nix?** - język Nix · menedżer pakietów
+3. **DevShell** - devcontainers · shell.nix · direnv
+4. **Flakes**
+5. **Więcej z Nixem** - modularność · obrazy OCI
+
+---
 src: ./pages/01-what-is-package-manager.md
 ---
 
